@@ -67,4 +67,8 @@ public class InmuebleEnAlquiler implements Puntuable{
 		ranking.add(puntuacion);
 	}
 
+	public Inmueble getInmueble() {
+		return this.inmueble;
+	}
+
 }

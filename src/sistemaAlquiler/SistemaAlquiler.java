@@ -1,5 +1,6 @@
 package sistemaAlquiler;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
@@ -33,6 +34,12 @@ public class SistemaAlquiler {
 	
 	public void publicarInmueble(Propietario propietario, InmuebleEnAlquiler inmAlquiler) {
 		this.inmueblesEnAlquiler.put(propietario, inmAlquiler);		
+	}
+
+	public Set<InmuebleEnAlquiler> alojamientosDisponibles(String ciudad, LocalDate entrada, LocalDate salida,
+			int huespedes, double precioMin, double precioMax) {
+		inmueblesEnAlquiler.stream().filter(inm -> );
+		return null;
 	}
 
 }

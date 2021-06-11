@@ -49,4 +49,8 @@ public class Inmueble {
 	private void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+
+	public String getCiudad() {
+		return this.ciudad;
+	}
 }
