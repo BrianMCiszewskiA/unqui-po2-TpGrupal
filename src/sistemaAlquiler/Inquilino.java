@@ -25,3 +25,5 @@ public class Inquilino extends Persona implements IUsuario{
 		}
 	}	
 }
+
+

@@ -47,8 +47,8 @@ public class Propietario extends Persona implements IUsuario{
 		}
 	}
 	
-	public void realizarAlta(Inmueble inmueble, Set<String> fotos, LocalTime in, LocalTime out, Set<Pago> pagos, double precio) {
-		InmuebleEnAlquiler inmAlquiler = new InmuebleEnAlquiler(inmueble, fotos, in, out, pagos, precio);
+	public void realizarAlta(Inmueble inmueble, Set<String> fotos, LocalTime in, LocalTime out, Pago pago, double precio) {
+		InmuebleEnAlquiler inmAlquiler = new InmuebleEnAlquiler(inmueble, fotos, in, out, pago, precio);
 		sistemaAlquiler.publicarInmueble(this, inmAlquiler);
 		this.inmueblesEnAlquiler.add(inmAlquiler);
 		
