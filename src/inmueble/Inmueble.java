@@ -3,7 +3,10 @@ package inmueble;
 import java.util.HashSet;
 import java.util.Set;
 
+import sistemaAlquiler.Propietario;
+
 public class Inmueble {
+	private Propietario propietario;
 	private String tipo;
 	private int superficie;
 	private String pais;
@@ -12,7 +15,8 @@ public class Inmueble {
 	private Set<String> servicios = new HashSet<String>();
 	private int capacidad;
 	
-	public Inmueble(String tipo, int superficie, String pais, String ciudad, String direccion, Set<String> servicios, int capacidad) {
+	public Inmueble(Propietario propietario, String tipo, int superficie, String pais, String ciudad, String direccion, Set<String> servicios, int capacidad) {
+		setPropietario(propietario);
 		setTipo(tipo);
 		setSuperficie(superficie);
 		setPais(pais);
@@ -20,6 +24,10 @@ public class Inmueble {
 		setDireccion(direccion);
 		setServicios(servicios);
 		setCapacidad(capacidad);
+	}
+
+	private void setPropietario(Propietario propietario) {
+		this.propietario = propietario;		
 	}
 
 	private void setCapacidad(int capacidad) {
@@ -52,5 +60,9 @@ public class Inmueble {
 
 	public String getCiudad() {
 		return this.ciudad;
+	}
+
+	public int getCapacidad() {
+		return this.capacidad;
 	}
 }

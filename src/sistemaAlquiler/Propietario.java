@@ -1,6 +1,6 @@
 package sistemaAlquiler;
 
-import java.time.LocalTime;
+import java.time.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -47,11 +47,16 @@ public class Propietario extends Persona implements IUsuario{
 		}
 	}
 	
-	public void realizarAlta(Inmueble inmueble, Set<String> fotos, LocalTime in, LocalTime out, Pago pago, double precio) {
+	public void realizarAlta(Inmueble inmueble, Set<String> fotos, LocalDateTime in, LocalDateTime out, Pago pago, double precio) {
 		InmuebleEnAlquiler inmAlquiler = new InmuebleEnAlquiler(inmueble, fotos, in, out, pago, precio);
-		sistemaAlquiler.publicarInmueble(this, inmAlquiler);
+		sistemaAlquiler.publicarInmueble(inmAlquiler);
 		this.inmueblesEnAlquiler.add(inmAlquiler);
-		
-		
+	}
+
+	@Override
+	public Set<InmuebleEnAlquiler> buscarAlojamiento(String ciudad, LocalDateTime entrada, LocalDateTime salida,
+			int huespedes, double precioMin, double precioMax) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

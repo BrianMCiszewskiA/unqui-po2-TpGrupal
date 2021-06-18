@@ -1,6 +1,6 @@
 package inmueble;
 
-import java.time.LocalTime;
+import java.time.*;
 import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +13,12 @@ public class InmuebleEnAlquiler implements Puntuable{
 	private List<Puntuacion> ranking = new ArrayList<Puntuacion>();
 	private Inmueble inmueble;
 	private Set<String> fotos = new HashSet<String>();
-	private LocalTime checkIn;
-	private LocalTime checkOut;
+	private LocalDateTime checkIn;
+	private LocalDateTime checkOut;
 	private Pago pago;
 	private double precioXDia;
 	
-	public InmuebleEnAlquiler(Inmueble inmueble, Set<String> fotos, LocalTime in, LocalTime out, Pago pago,
+	public InmuebleEnAlquiler(Inmueble inmueble, Set<String> fotos, LocalDateTime in, LocalDateTime out, Pago pago,
 			double precio) {
 		setInmueble(inmueble);
 		setFotos(fotos);
@@ -36,11 +36,11 @@ public class InmuebleEnAlquiler implements Puntuable{
 		this.pago = pago;
 	}
 
-	private void setCheckOut(LocalTime out) {
+	private void setCheckOut(LocalDateTime out) {
 		this.checkOut = out;
 	}
 
-	private void setCheckIn(LocalTime in) {
+	private void setCheckIn(LocalDateTime in) {
 		this.checkIn = in;
 	}
 
@@ -69,6 +69,22 @@ public class InmuebleEnAlquiler implements Puntuable{
 
 	public Inmueble getInmueble() {
 		return this.inmueble;
+	}
+
+	public LocalDateTime getCheckIn() {
+		return this.checkIn;
+	}
+
+	public LocalDateTime getCheckOut() {
+		return this.checkOut;
+	}
+
+	public String getCiudad() {
+		return inmueble.getCiudad();
+	}
+
+	public int getHuespedes() {
+		return inmueble.getCapacidad();
 	}
 
 }
