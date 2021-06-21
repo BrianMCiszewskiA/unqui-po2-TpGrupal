@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import inmueble.InmuebleEnAlquiler;
 
@@ -17,8 +16,7 @@ public class SistemaAlquiler {
 	private Set <InmuebleEnAlquiler> inmueblesEnAlquiler = new HashSet <InmuebleEnAlquiler> ();
 	
 	public void agregarInquilino(Inquilino inquilino) {
-		this.inquilinos.add(inquilino);
-		
+		this.inquilinos.add(inquilino);		
 	}
 
 	public void eliminarInquilino(Inquilino inquilino) {
@@ -33,6 +31,10 @@ public class SistemaAlquiler {
 
 	public void eliminarPropietario(Propietario propietario) {
 		this.propietarios.remove(propietario);		
+	}
+	
+	public Set<IUsuario> getInquilinos() {
+		return this.inquilinos;
 	}
 	
 	public void publicarInmueble(InmuebleEnAlquiler inmAlquiler) {

@@ -1,7 +1,7 @@
 package sistemaAlquiler;
 
 import java.time.*;
-import java.util.Set;
+import java.util.List;
 
 import inmueble.InmuebleEnAlquiler;
 import persona.Persona;
@@ -30,7 +30,7 @@ public class Inquilino extends Persona implements IUsuario{
 	}
 
 	@Override
-	public Set<InmuebleEnAlquiler> buscarAlojamiento(String ciudad, LocalDateTime entrada, LocalDateTime salida, int huespedes,
+	public List<InmuebleEnAlquiler> buscarAlojamiento(String ciudad, LocalDateTime entrada, LocalDateTime salida, int huespedes,
 			double precioMin, double precioMax) {
 		requisitosMinimos(ciudad, entrada, salida);
 		return sistemaAlquiler.alojamientosDisponibles(ciudad, entrada, salida, huespedes, precioMin, precioMax);

@@ -2,6 +2,7 @@ package sistemaAlquiler;
 
 import java.time.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import inmueble.Inmueble;
@@ -54,7 +55,7 @@ public class Propietario extends Persona implements IUsuario{
 	}
 
 	@Override
-	public Set<InmuebleEnAlquiler> buscarAlojamiento(String ciudad, LocalDateTime entrada, LocalDateTime salida,
+	public List<InmuebleEnAlquiler> buscarAlojamiento(String ciudad, LocalDateTime entrada, LocalDateTime salida,
 			int huespedes, double precioMin, double precioMax) {
 		// TODO Auto-generated method stub
 		return null;
