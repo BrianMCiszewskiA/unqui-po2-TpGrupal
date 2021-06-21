@@ -86,5 +86,9 @@ public class InmuebleEnAlquiler implements Puntuable{
 	public int getHuespedes() {
 		return inmueble.getCapacidad();
 	}
+	
+	public double getPrecioXDia() {
+		return this.precioXDia;
+	}
 
 }

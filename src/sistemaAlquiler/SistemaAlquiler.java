@@ -39,11 +39,11 @@ public class SistemaAlquiler {
 		this.inmueblesEnAlquiler.add(inmAlquiler);		
 	}
 
-	public Set<InmuebleEnAlquiler> alojamientosDisponibles(String ciudad, LocalDateTime entrada, LocalDateTime salida,
+	public List<InmuebleEnAlquiler> alojamientosDisponibles(String ciudad, LocalDateTime entrada, LocalDateTime salida,
 			int huespedes, double precioMin, double precioMax) {
 		List<InmuebleEnAlquiler> reqObl = inmueblesEnAlquiler.stream().filter(inm -> requisitosObligatorios(inm, ciudad, entrada, salida)).collect(Collectors.toList());
-		// TODO: requisitos opcionales
-		return null;
+		List<InmuebleEnAlquiler> reqOpc = reqObl.stream().filter(inm -> requisitosOpcionales(inm, huespedes, precioMin, precioMax)).collect(Collectors.toList());
+		return reqOpc;
 	}
 	
 	
@@ -53,6 +53,14 @@ public class SistemaAlquiler {
         Predicate < InmuebleEnAlquiler > p3 = (InmuebleEnAlquiler inm) -> inm.getCheckOut() == salida;
         Predicate < InmuebleEnAlquiler > ptotal = p1.and(p2).and(p3);
         return ptotal.test(inmueble);
+    }
+    
+    private boolean requisitosOpcionales(InmuebleEnAlquiler inmueble, int capacidad, double precioMin, double precioMax) {
+    	Predicate < InmuebleEnAlquiler > p1 = (InmuebleEnAlquiler inm) -> inm.getHuespedes() == capacidad;
+    	Predicate < InmuebleEnAlquiler > p2 = (InmuebleEnAlquiler inm) -> inm.getPrecioXDia() >= precioMin;
+    	Predicate < InmuebleEnAlquiler > p3 = (InmuebleEnAlquiler inm) -> inm.getPrecioXDia() <= precioMax;
+    	Predicate < InmuebleEnAlquiler > ptotal = p1.or(p2).and(p3);
+    	return ptotal.test(inmueble);
     }
 
 }
