@@ -37,6 +37,10 @@ public class SistemaAlquiler {
 		return this.inquilinos;
 	}
 	
+	public Set<IUsuario> getPropietarios() {
+		return this.propietarios;
+	}
+	
 	public void publicarInmueble(InmuebleEnAlquiler inmAlquiler) {
 		this.inmueblesEnAlquiler.add(inmAlquiler);		
 	}
@@ -49,7 +53,7 @@ public class SistemaAlquiler {
 	}
 	
 	
-    private boolean requisitosObligatorios(InmuebleEnAlquiler inmueble, String ciudad, LocalDateTime entrada, LocalDateTime salida) {
+    boolean requisitosObligatorios(InmuebleEnAlquiler inmueble, String ciudad, LocalDateTime entrada, LocalDateTime salida) {
         Predicate < InmuebleEnAlquiler > p1 = (InmuebleEnAlquiler inm) -> inm.getCiudad().equals(ciudad);
         Predicate < InmuebleEnAlquiler > p2 = (InmuebleEnAlquiler inm) -> inm.getCheckIn() == entrada;
         Predicate < InmuebleEnAlquiler > p3 = (InmuebleEnAlquiler inm) -> inm.getCheckOut() == salida;
@@ -57,12 +61,16 @@ public class SistemaAlquiler {
         return ptotal.test(inmueble);
     }
     
-    private boolean requisitosOpcionales(InmuebleEnAlquiler inmueble, int capacidad, double precioMin, double precioMax) {
+    boolean requisitosOpcionales(InmuebleEnAlquiler inmueble, int capacidad, double precioMin, double precioMax) {
     	Predicate < InmuebleEnAlquiler > p1 = (InmuebleEnAlquiler inm) -> inm.getHuespedes() == capacidad;
     	Predicate < InmuebleEnAlquiler > p2 = (InmuebleEnAlquiler inm) -> inm.getPrecioXDia() >= precioMin;
     	Predicate < InmuebleEnAlquiler > p3 = (InmuebleEnAlquiler inm) -> inm.getPrecioXDia() <= precioMax;
     	Predicate < InmuebleEnAlquiler > ptotal = p1.or(p2).and(p3);
     	return ptotal.test(inmueble);
     }
+
+	public Set<InmuebleEnAlquiler> getInmueblesEnAlquiler() {
+		return this.inmueblesEnAlquiler;
+	}
 
 }

@@ -41,6 +41,10 @@ public class Inquilino extends Persona implements IUsuario{
 			throw new RuntimeException("La ciudad, la fecha de entrada y la de salida, no pueden ser nulas");
 		}
 	}
+
+	public Object getSistemaAlquiler() {
+		return this.sistemaAlquiler;
+	}
 }
 
 
