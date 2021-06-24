@@ -12,6 +12,7 @@ import sistemaAlquiler.Propietario;
 import sistemaAlquiler.Puntuable;
 import sistemaAlquiler.Puntuacion;
 import sistemaAlquiler.SistemaAlquiler;
+import sistemaAlquiler.cancelacion.PoliticaCancelacion;
 
 public class InmuebleEnAlquiler{
 	private Inmueble inmueble;
@@ -100,5 +101,20 @@ public class InmuebleEnAlquiler{
 	}
 	public void puntearInmueble(Puntuacion pun) {
 		this.getInmueble().agregarPuntuacion(pun);
+	}
+	
+	//precio
+	public double precioFinal() {
+		//devuelve el precio del alquiler dentro de los dias dados.
+		return this.diasDeEstadia() * this.getPrecioXDia();
+	}
+	
+	public int diasDeEstadia() {
+		//se deberia restar los dias entre el check in y el check out
+		return 0;//pendiente
+	}
+	
+	public PoliticaCancelacion getPoliticaCancelacion() {
+		return this.inmueble.getPoliticaCancelacion();
 	}
 }

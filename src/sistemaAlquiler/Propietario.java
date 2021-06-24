@@ -8,6 +8,7 @@ import java.util.Set;
 import inmueble.Inmueble;
 import inmueble.InmuebleEnAlquiler;
 import persona.Persona;
+import sistemaAlquiler.cancelacion.PoliticaCancelacion;
 
 public class Propietario extends Persona implements IUsuario{
 	
@@ -20,6 +21,7 @@ public class Propietario extends Persona implements IUsuario{
 	 * InmuebleEnAlquiler en donde recién ahí se incluirían esos atributos, sumado al atributo "Inmueble" el cual tendrá la referencia al 
 	 * Inmueble que se puso en alquiler.
 	 */
+	private PoliticaCancelacion politicaCancelacion;
 
 	public Propietario(String nombre, String email, int telefono) {
 		super(nombre, email, telefono);
@@ -59,5 +61,13 @@ public class Propietario extends Persona implements IUsuario{
 			int huespedes, double precioMin, double precioMax) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	//politica de cancelacion
+	public void setPoliticaCancelacion(PoliticaCancelacion can) {
+		this.politicaCancelacion = can;
+	}
+	public PoliticaCancelacion getPoliticaCancelacion() {
+		return this.politicaCancelacion;
 	}
 }

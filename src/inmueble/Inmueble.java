@@ -8,6 +8,7 @@ import java.util.Set;
 import sistemaAlquiler.Propietario;
 import sistemaAlquiler.Puntuable;
 import sistemaAlquiler.Puntuacion;
+import sistemaAlquiler.cancelacion.PoliticaCancelacion;
 
 public class Inmueble implements Puntuable{
 	private List<Puntuacion> ranking = new ArrayList<Puntuacion>();
@@ -93,4 +94,7 @@ public class Inmueble implements Puntuable{
 		this.getPropietario().agregarPuntuacion(puntuacion);
 	}
 
+	public PoliticaCancelacion getPoliticaCancelacion() {
+		return this.propietario.getPoliticaCancelacion();
+	}
 }
