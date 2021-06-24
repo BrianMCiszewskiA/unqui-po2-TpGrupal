@@ -23,7 +23,7 @@ public class Cancelacion implements PoliticaCancelacion{
 	private boolean estaDentroDeLosDias(InmuebleEnAlquiler inmueble) {
 		LocalDateTime diaInicio = inmueble.getCheckIn().minusDays(this.cantDiasGratis);
 		LocalDateTime diaActual = LocalDateTime.now();
-		return !diaActual.isAfter(diaInicio);
+		return !diaActual.isAfter(diaInicio); //hacer que tome el dia limite tmb
 	}
 	
 

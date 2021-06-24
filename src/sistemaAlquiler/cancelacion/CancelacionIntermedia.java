@@ -14,7 +14,7 @@ public class CancelacionIntermedia implements PoliticaCancelacion{
 		if(estaDentroDeLosDias(inmueble, this.cantDiasPreviosGratuita)) {
 			return 0;
 		} else if (this.estaDentroDeLosDias(inmueble, this.cantDiasPreviosMitad)) {
-			return inmueble.precioFinal() % 2;
+			return inmueble.precioFinal() / 2;
 		} else {
 			return inmueble.precioFinal();
 		}
@@ -23,6 +23,7 @@ public class CancelacionIntermedia implements PoliticaCancelacion{
 	private boolean estaDentroDeLosDias(InmuebleEnAlquiler inmueble, int dias) {
 		LocalDateTime diaInicio = inmueble.getCheckIn().minusDays(dias);
 		LocalDateTime diaActual = LocalDateTime.now();
-		return !diaActual.isAfter(diaInicio);
+		
+		return !diaActual.isAfter(diaInicio); //hacer que tome el dia limite tmb
 	}
 }
