@@ -1,11 +1,16 @@
 package inmueble;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import sistemaAlquiler.Propietario;
+import sistemaAlquiler.Puntuable;
+import sistemaAlquiler.Puntuacion;
 
-public class Inmueble {
+public class Inmueble implements Puntuable{
+	private List<Puntuacion> ranking = new ArrayList<Puntuacion>();
 	private Propietario propietario;
 	private String tipo;
 	private int superficie;
@@ -65,4 +70,27 @@ public class Inmueble {
 	public int getCapacidad() {
 		return this.capacidad;
 	}
+	
+	public Propietario getPropietario() {
+		return this.propietario;
+	}
+	
+	@Override
+	public int puntuacion() {
+		int count = 0;
+		for(Puntuacion puntuacion: ranking) {
+			count = count + puntuacion.valor();
+		}
+		return count/ranking.size();
+	}
+
+	@Override
+	public void agregarPuntuacion(Puntuacion puntuacion) {
+		ranking.add(puntuacion);
+	}
+	
+	public void puntearPropietario(Puntuacion puntuacion) {
+		this.getPropietario().agregarPuntuacion(puntuacion);
+	}
+
 }

@@ -42,8 +42,14 @@ public class Inquilino extends Persona implements IUsuario{
 		}
 	}
 
-	public Object getSistemaAlquiler() {
+	public SistemaAlquiler getSistemaAlquiler() {
 		return this.sistemaAlquiler;
+	}
+	public void realizarCheckOut(InmuebleEnAlquiler inm, Puntuacion punPropietario, Puntuacion punInmueble) {
+		//remover inquilino del inmueble, comprobando que este en ese
+		inm.realizarCheckOut(this.getSistemaAlquiler(), this);
+		inm.puntearPropietario(punPropietario);
+		inm.puntearInmueble(punInmueble);
 	}
 }
 

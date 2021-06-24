@@ -14,6 +14,7 @@ public class SistemaAlquiler {
 	private Set<IUsuario> inquilinos = new HashSet<IUsuario>();
 	private Set<IUsuario> propietarios = new HashSet<IUsuario>();
 	private Set <InmuebleEnAlquiler> inmueblesEnAlquiler = new HashSet <InmuebleEnAlquiler> ();
+	private Set <InmuebleEnAlquiler> inmueblesAlquilados = new HashSet <InmuebleEnAlquiler>();
 	
 	public void agregarInquilino(Inquilino inquilino) {
 		this.inquilinos.add(inquilino);		
@@ -71,6 +72,17 @@ public class SistemaAlquiler {
 
 	public Set<InmuebleEnAlquiler> getInmueblesEnAlquiler() {
 		return this.inmueblesEnAlquiler;
+	}
+	
+	public void marcarComoAlquilado(InmuebleEnAlquiler inmueble) {
+		//esto es para que no aparezcan disponibles para alquilar los inmuebles ya alquilados, y se puedan volver a 
+		//	agregar facilmente una vez dejen de estar alquilados.
+		this.inmueblesEnAlquiler.remove(inmueble);
+		this.inmueblesAlquilados.add(inmueble);
+	}
+	public void checkOutAlquiler(InmuebleEnAlquiler inmueble) {
+		this.inmueblesAlquilados.remove(inmueble);
+		this.inmueblesEnAlquiler.add(inmueble);
 	}
 
 }
